@@ -20,7 +20,6 @@ RSpec.describe 'Board test' do
   end
 
   it 'test is_game_finish? should return false when ' do
-    # @board.tile = [[:O, :X, nil], [:X, :O, nil], [:O, :X, nil]]
     # expect(@board.is_game_finish?(:X)).to be false
     # expect(@board.is_game_finish?(:O)).to be false
     # @board.tile = [[:O, :X, :X], [:X, :O, :O], [:O, :X, :O]]

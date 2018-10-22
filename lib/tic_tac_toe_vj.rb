@@ -5,11 +5,11 @@ require 'tic_tac_toe_vj/player'
 require 'tic_tac_toe_vj/location'
 require 'tic_tac_toe_vj/game_status'
 
-class TicTakToeController
+class TicTakToe
   include TicTacToeVj
   include GameStatus
 
-  def initialize(player1_name="Vijay", player2_name="Ajay")
+  def initialize(player1_name="player1", player2_name="player2")
     @board = Board.new
     @tile_location = Location.new(0,0)
     @player1 = Player.new(player1_name, :O)
@@ -20,7 +20,7 @@ class TicTakToeController
   def start
     puts "Tic tak toe is starting -------------"
     sleep(1)
-    puts "terns should be write as row coma column ex 1,1 this will Enter your Symbol in the middle"
+    puts "turns should be write as row coma column ex 1,1 this will Enter your Symbol in the middle"
     sleep(0.5)
     user_play_move
   end
@@ -50,7 +50,7 @@ class TicTakToeController
   def update_game_after_move(gamestatus)
     case gamestatus
     when GameStatus::NEXT_MOVE
-      puts "your tern #{@game.current_player.name}"
+      puts "your turn #{@game.current_player.name}"
       user_play_move
     when GameStatus::DRAW
       puts "its a draw"
@@ -68,8 +68,14 @@ class TicTakToeController
   end
 
   def user_play_move
-    puts "#{@board.tile}"
-    puts "Enter your tern #{@game.current_player.name}"
+    @board.tile.each do |row|
+      row.each do |column|
+        print " #{column} "
+      end
+      puts " "
+    end
+
+    puts "Enter your turn #{@game.current_player.name}"
     location = gets.chomp
     if validate_input?(location)
       move_locations = location.split(",")
@@ -78,7 +84,7 @@ class TicTakToeController
         @board.mark_tile(@tile_location, @game.current_player.symbol)
         @game.play_move(@tile_location)
       else
-        puts "location is already marked please do terns again"
+        puts "location is already marked please do turns again"
         user_play_move
       end
     else

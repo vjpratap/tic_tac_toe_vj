@@ -7,7 +7,7 @@ class Board
 
   def initialize()
     @number_of_tiles_marked = 0
-    @tile = Array.new(BOARD_SIZE) {Array.new(BOARD_SIZE)}
+    @tile = Array.new(BOARD_SIZE) {Array.new(BOARD_SIZE, '_')}
   end
 
   def mark_tile(location, mark)
@@ -18,7 +18,7 @@ class Board
   end
 
   def is_tile_not_marked?(location)
-    return @tile[location.row][location.column].nil?
+    return @tile[location.row][location.column] == "_"
   end
 
   def number_of_terns

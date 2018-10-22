@@ -8,7 +8,7 @@ RSpec.describe 'Tic Tac Toe test' do
     @player1 = Player.new("Vijay", :X)
     @player2 = Player.new("Ajay", :O)
     @game = Game.new(@board, @player1, @player2)
-    @tic_Tak_Toe_controller = TicTakToeController.new
+    @tic_Tak_Toe_controller = TicTakToe.new
   end
 
   it 'validate input should return false when invalid input' do
